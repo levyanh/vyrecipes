@@ -15,7 +15,7 @@
                     <p>{{recipe.instruction|truncatewords:40}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="/">Read more</a>
+                    <a href="{% url 'recipe_detail' recipe.id %}">Read more</a>
                 </div>
                 </div>
             </div>

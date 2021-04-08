@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="card">
-    {{recipe.title}}
-    <img src="{{recipe.image}}">
-    {{recipe.ingredient}}
+<div class="card brown darken-3">
+    <h5> {{recipe.title}} </h5>
+    <img src="{{recipe.image}}"> <br>
+    {{recipe.ingredient}}<br>
     {{recipe.instruction}}
 </div>
 {% endblock %}
