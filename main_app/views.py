@@ -1,12 +1,13 @@
-from django.shortcuts import render
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Profile, Recipe
 
-#Home view:
+
 def home(request):
-    return render(request, 'home.html')
-    # return render(request, 'home.html', {'recipes': recipes})
+    recipes = Recipe.objects.all()
+    return render(request, 'home.html', {'recipes': recipes})
 
-#About view:
-def about(request):
+def about (request):
     return render(request, 'about.html')
 
+def profile (request):
+    return render(request, 'profile.html')

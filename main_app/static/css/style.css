@@ -1,9 +1,16 @@
 body {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://cdn.asiatatler.com/asiatatler/i/th/2019/08/15162927-dsc0499_cover_2000x1335.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    color: white;
+    font-size: medium;
     }
-    
+
 main {
     flex: 1 0 auto;
     }

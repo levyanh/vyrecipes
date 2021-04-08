@@ -2,33 +2,51 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Vy's Recipes</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    </head>
-    <body>
-        <header class="navbar-fixed">
-            <nav>
-            <div class="nav-wrapper">
-                <ul>
-                <li><a href="/" class="left brand-logo">Vy's Recipes</a></li>
-                </ul>
-                <ul class="right">
-                <li><a href="/about">About</a></li>
-                </ul>
-            </div>
-            </nav>
-        </header>
-        <main class="container">
-            {% block content %}
-            {% endblock %}
-        </main>
-        <footer class="page-footer">
-            <div class="right">All Rights Reserved, &copy; 2019 Vy's Recipes &nbsp;</div>
-        </footer>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vy's Kitchen</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</head>
+<body>
+    <header class="navbar-fixed">
+        <nav>
+        <div class="nav-wrapper brown darken-4">
+            <ul>
+            <li><a href="/" class="left brand-logo">Vy's Kitchen</a></li>
+            </ul>
+            <ul class="right">
+            <li><a href="/about">About</a></li>
+            <li><a href="{% url 'profile' %}">{{user.username}}'s Profile</a></li>
+            </ul>
+        </div>
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="page-footer center brown darken-4">
+        <a class="white-text" href="/">Contact Us | </a>
+        <a class="white-text" href="/">FAQ | </a>
+        <a class="white-text" href="/">Reviews | </a>
+        <a class="white-text" href="/">Blog | </a>
+        <a class="white-text" href="/">Privacy Police | </a>
+        <a class="white-text" href="/">Legal Stuff</a>
+        <h5>Follow Us On Social Media</h5>
+        <a href="/"><i class="fab fa-facebook fa-3x white-text darken-3"></i></a>
+        <a href="/"><i class="fab fa-twitter fa-3x white-text darken-3"></i></a>
+        <a href="/"><i class="fab fa-instagram fa-3x white-text darken-3"></i></a>
+        <a href="/"><i class="fab fa-google fa-3x white-text darken-3"></i></a>
+        <a href="/"><i class="fab fa-linkedin fa-3x white-text darken-3"></i></a>
+        <p>Copyright&copy; 2021 Vy's Kitchen. All Rights Reserved</p>
+    </footer>
+</body>
 </html>

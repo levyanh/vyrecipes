@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card black-text">
+    <p>Welcome {{user.username}}</p>
+    <img class="avatar" src="{{user.profile.avatar}}">
+    <p>Username: {{user.username}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Date joined: {{user.date_joined}}</p>
+</div>
+{% endblock %}
