@@ -3,7 +3,7 @@
 {% block content %}
 <div class="card brown darken-3">
     <h5> {{recipe.title}} </h5>
-    <img src="{{recipe.image}}"> <br>
+    <img src="{{recipe.image.url}}" width="500px"/> <br>
     {{recipe.ingredient}}<br>
     {{recipe.instruction}}
 </div>

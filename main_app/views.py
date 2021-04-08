@@ -12,8 +12,12 @@ def home(request):
 def about (request):
     return render(request, 'about.html')
 
-def profile (request):
-    return render(request, 'profile.html')
+def profile (request, user_id):
+    profiles = Profile.objects.get(user_id=user_id)
+    print(profiles,"!!!!!!")
+    for each in Profile.objects.all():
+        print(each.avatar)
+    return render(request, 'profile.html', {'profiles': profiles})
 
 def recipe_detail(request, recipe_id):
     recipe = Recipe.objects.get(id=recipe_id)
@@ -28,7 +32,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('profile')
+            return redirect('/')
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})

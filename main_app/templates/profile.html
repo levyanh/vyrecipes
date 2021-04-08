@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="card black-text">
+<div class="card brown darken-3">
     <p>Welcome {{user.username}}</p>
-    <img class="avatar" src="{{user.profile.avatar}}">
+    <img class="avatar" src="{{profiles.avatar.url}}">
     <p>Username: {{user.username}}</p>
     <p>Email: {{user.email}}</p>
     <p>Date joined: {{user.date_joined}}</p>

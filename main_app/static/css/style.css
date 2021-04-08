@@ -19,3 +19,27 @@ footer {
     padding-top: 0;
     text-align: right;
     }
+
+form {
+    color:rgb(252, 252, 251);
+    padding: 5%;
+    margin-top:10%;
+    margin: 0 auto;
+    align-items: center;
+    background: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+    }
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.row {
+    margin: 50px 20px 50px 20px;
+}

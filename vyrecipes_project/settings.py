@@ -121,5 +121,5 @@ USE_TZ = True
 MEDIA_ROOT = MEDIA_DIR
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-LOGIN_REDIRECT_URL = '/profile/'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
