@@ -21,9 +21,11 @@
 - pip3 install -r requirements.txt
 - python3 manage.py migrate
 - python3 manage.py runserver
+
 **In this project, I installed:**
 - python -m pip install Pillow 
 - pip install argon2-cffi
+
 **Remember to add superuser admin**
 - python3 manage.py createsuperuser
 
@@ -32,7 +34,8 @@
 - See all the latest receipes in homepage.
 - Click on Read More to see the receipe detail.
 - Sign up a new account.
-- Log in if he/she has already registered.
+- Log in if he/she has already registered
+
 **After login, user should be able to:**
 - Be redirected to their public profile page
 - Change his/her name
