@@ -17,29 +17,29 @@
 </head>
 <body>
     <header class="navbar-fixed">
-        <nav>
-        <div class="nav-wrapper brown darken-4">
-            <ul>
-            <li><a href="/" class="left brand-logo">Vy's Kitchen</a></li>
-            </ul>
-            <ul class="right">
-            <li><a href="/about">About</a></li>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'profile' user.id %}">{{user.username}}'s Profile</a></li>
-                <li><a href="{% url 'logout' %}">Log Out</a></li>
-            {% else %}
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                <li><a href="{% url 'login' %}">Log In</a></li>
-            {% endif %}
-            </ul>
-        </div>
-        </nav>
+        <nav class="fix">
+            <div class="nav-wrapper brown darken-3">
+                <ul>
+                <li><a href="/" class="left brand-logo">Vy's Kitchen</a></li>
+                </ul>
+                <ul class="right">
+                <li><a href="/about">About</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' user.id %}">{{user.username}}'s Profile</a></li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                {% endif %}
+                </ul>
+            </div>
+            </nav>
     </header>
     <main class="container">
         {% block content %}
         {% endblock %}
     </main>
-    <footer class="page-footer center brown darken-4">
+    <footer class="page-footer center transparent">
         <a class="white-text" href="/">Contact Us | </a>
         <a class="white-text" href="/">FAQ | </a>
         <a class="white-text" href="/">Reviews | </a>
