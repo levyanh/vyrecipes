@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm, CommentForm, UserUpdateForm
+from .forms import SignUpForm, CommentForm, CommentUpdateForm, UserUpdateForm
 from .models import Profile, Recipe, Comment
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -62,7 +62,7 @@ def comment_add(request, recipe_id):
 # Edit comment
 @login_required
 def comment_edit(request, recipe_id, comment_id):
-    recipe = get_object_or_404(recipe, id=recipe_id)
+    recipe = get_object_or_404(Recipe, id=recipe_id)
     comment = get_object_or_404(Comment, id=comment_id)
     comment_form = CommentUpdateForm(request.POST or None,instance=comment)
     if request.POST and comment_form.is_valid():

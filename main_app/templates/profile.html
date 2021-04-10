@@ -21,7 +21,7 @@
     {% for comment in comments  %}
         {% if comment %}
             <p> On {{comment.created_date}}</p>
-            <h5>Post: <a href="{% url 'recipe_detail' comment.recipe.id %}">{{ comment.recipe}}</a></h5>
+            <p>Post: <a href="{% url 'recipe_detail' comment.recipe.id %}">{{ comment.recipe}}</a></p>
             <p>{{ comment.text }}</p>
             <div class="card-action">
             <a href="{% url 'comment_edit' comment.recipe.id comment.id %}">Edit</a>
