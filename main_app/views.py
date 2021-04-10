@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm, CommentForm
+from .forms import SignUpForm, CommentForm, UserUpdateForm
 from .models import Profile, Recipe, Comment
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -18,19 +18,31 @@ def about (request):
 
 # Profile view:
 @login_required
-def profile (request, user_id):
+def profile(request, user_id):
     profiles = Profile.objects.get(user_id=user_id)
-    print(profiles,"!!!!!!")
-    for each in Profile.objects.all():
-        print(each.avatar)
-    return render(request, 'profile.html', {'profiles': profiles})
+    recipe = Recipe.objects.all()
+    comment = Comment.objects.filter(user=request.user)
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+        return redirect('profile')
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        context = {
+            'profiles': profiles,
+            'comments' : comment,
+            'recipes' : recipe,
+            'user_form' : user_form
+            }
+    return render(request, 'profile.html',context)
 
 # Recipe detail view:
 @login_required
 def recipe_detail(request, recipe_id):
     recipe = Recipe.objects.get(id=recipe_id)
     comments = recipe.comments.all()
-    return render(request, 'recipe_detail.html', {'recipe': recipe, 'comments': comments})
+    return render(request, 'recipe_detail.html', {'recipe': recipe, 'comments':comments})
 
 # Add comment
 @login_required

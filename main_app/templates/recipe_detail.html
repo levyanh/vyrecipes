@@ -2,10 +2,11 @@
 
 {% block content %}
 <div class="card brown darken-3">
-    <h3> {{recipe.title}} </h3>
-    <img src="{{recipe.image.url}}" width="500px"/> <br>
-    {{recipe.ingredient}}<br>
-    {{recipe.instruction}}
+<div class="container">
+    <h3> {{ recipe.title }} </h3>
+    <img class="center" src="{{ recipe.image.url }}" width="500px"/> <br>
+    {{ recipe.ingredient }}<br>
+    {{ recipe.instruction }}
     <div class="Add Comment">
         <a class="btn" href="{% url 'comment_add' recipe.id %}">Add comment</a>
     </div>
@@ -15,18 +16,15 @@
                 {% if comments.count == 0 %}
                     <h4>No comments posted!</h4>
                 {% else %}
-                    <h4>{{comments.count }} comments</h4>
+                    <h4>{{ comments.count }} comments</h4>
                 {% endif %}
                 {% for comment in comments %}
                     <br>
                         <div class="card-action">
-                            {{comment.created_date}}
-                            <p>{{ comment.text|safe|linebreaks }}</p>
-                            <p>Posted by: <strong>{{ comment.user}}</strong></p>
-                            {% if user.id == comment.user_id or user.id == recipe.author_id%}
-                                <a href="{% url 'comment_edit' recipe.id comment.id %}">Edit</a>
-                                <a href="{% url 'comment_delete' recipe.id comment.id%}">Delete</a>
-                            {% endif %} 
+                            <small>On {{comment.created_date}}</small>
+                            <p>{{comment.user}} said:</p>
+                            <h5>{{ comment.text|safe|linebreaks }}</h5>
+                            
                         </div>
                 {% endfor %}
             </div>
