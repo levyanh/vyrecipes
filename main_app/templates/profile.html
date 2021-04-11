@@ -3,7 +3,7 @@
 {% block content %}
 <div class="center">
     <h3>&hearts; Welcome {{user.username}} &hearts;</h3>
-    <img class="avatar" src="{{profiles.avatar.url}}">
+    <img class="avatar" src="{{profile.avatar.url}}">
     <p>Username: {{user.username}}</p>
     <p>Email: {{user.email}}</p>
     <p>Date joined: {{user.date_joined}}</p>
@@ -14,6 +14,7 @@
     <form enctype="multipart/form-data" method="POST">
         {% csrf_token %}
         {{ user_form.as_p }}
+        {{ profile_form.as_p }}
         <input type="submit" class='btn' value="Update">
     </form>
 

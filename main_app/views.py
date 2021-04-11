@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm, CommentForm, CommentUpdateForm, UserUpdateForm
+from .forms import SignUpForm, CommentForm, CommentUpdateForm, UserUpdateForm, ProfileUpdateForm
 from .models import Profile, Recipe, Comment
 from django.shortcuts import get_object_or_404
-from django.urls import reverse
+
 
 # Home view:
 def home(request):
@@ -18,24 +18,27 @@ def about (request):
 
 # Profile view:
 @login_required
-def profile(request, user_id):
-    profiles = Profile.objects.get(user_id=user_id)
+def profile(request):
     recipe = Recipe.objects.all()
     comment = Comment.objects.filter(user=request.user)
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
-        if user_form.is_valid():
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
+            profile_form.save()
         return redirect('profile')
     else:
         user_form = UserUpdateForm(instance=request.user)
-        context = {
-            'profiles': profiles,
-            'comments' : comment,
-            'recipes' : recipe,
-            'user_form' : user_form
-            }
+        profile_form = ProfileUpdateForm(instance=request.user.profile)    
+    context = {
+        'recipes' : recipe,
+        'comments' : comment,
+        'user_form' : user_form,
+        'profile_form' : profile_form
+    }
     return render(request, 'profile.html',context)
+
 
 # Recipe detail view:
 @login_required
@@ -66,8 +69,8 @@ def comment_edit(request, recipe_id, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     comment_form = CommentUpdateForm(request.POST or None,instance=comment)
     if request.POST and comment_form.is_valid():
-            comment_form.save()
-            return redirect('recipe_detail', recipe_id=recipe_id)
+        comment_form.save()
+        return redirect('recipe_detail', recipe_id=recipe_id)
     else:
         comment_form = CommentUpdateForm()
     return render(request, 'comment/comment_edit.html', {"comment_form" : comment_form})
