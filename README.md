@@ -10,7 +10,7 @@
 - Language: HTML, CSS, JS, Python
 - Framework: Django, Materialize
 - Database: Postgresql
-- Deployment on: Netlify 
+- Deployment on: Heroku
 
 ## Installation steps:
 - python3 -m venv .env
@@ -39,7 +39,6 @@
 - Be redirected to their public profile page
 - Change his/her name
 - Change his/her email
-- Save the reciepe that he/she likes
 
 ## Wireframes:
 
