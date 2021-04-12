@@ -9,7 +9,7 @@ from django.shortcuts import get_object_or_404
 
 # Home view:
 def home(request):
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.all().order_by('-created_date')
     return render(request, 'home.html', {'recipes': recipes})
 
 # About view:
@@ -42,7 +42,7 @@ def recipe_detail(request, recipe_id):
     recipe = Recipe.objects.get(id=recipe_id)
     comments = recipe.comments.all()
     return render(request, 'recipe_detail.html', {'recipe': recipe, 'comments':comments})
-
+    
 # Add comment
 @login_required
 def comment_add(request, recipe_id):
@@ -92,7 +92,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('/')
+            return redirect('profile')
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
