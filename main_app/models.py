@@ -3,14 +3,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-# Profile model:
-class Profile(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
-    avatar = models.ImageField(default='default_avatar.jpg', upload_to='user_avatar')
-
-    def __str__(self):
-        return self.user.username
-
 # Recipe model:   
 class Recipe(models.Model):
     title = models.CharField(max_length=100)

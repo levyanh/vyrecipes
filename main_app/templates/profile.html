@@ -1,36 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="center">
+<div class="profile">
     <h3>&hearts; Welcome {{user.username}} &hearts;</h3>
-    <img class="avatar" src="{{profile.avatar.url}}">
     <p>Username: {{user.username}}</p>
     <p>Email: {{user.email}}</p>
     <p>Date joined: {{user.date_joined}}</p>
 </div>
-
-<h4>Update Your Profile</h4>
-    </div>
     <form enctype="multipart/form-data" method="POST">
+        <h4 class="center">Update Your Profile</h4>
         {% csrf_token %}
         {{ user_form.as_p }}
-        {{ profile_form.as_p }}
-        <input type="submit" class='btn' value="Update">
+        <div class="button">
+            <input type="submit" class="btn yellow darken-2" yellow darken-2" value="update">
+        </div>
     </form>
-
-<h4>Recent comments</h4>
-    {% for comment in comments  %}
-        {% if comment %}
-            <p> On {{comment.created_date}}</p>
-            <p>Post: <a href="{% url 'recipe_detail' comment.recipe.id %}">{{ comment.recipe}}</a></p>
-            <p>{{ comment.text }}</p>
-            <div class="card-action">
-            <a href="{% url 'comment_edit' comment.recipe.id comment.id %}">Edit</a>
-            <a href="{% url 'comment_delete' comment.recipe.id comment.id%}">Delete</a>
-            </div>
-        {% else %}
-            <p>No commnets yet</p>
-        {% endif %}
-    {% endfor %} 
+<div class="comment white-text">
+    <h4>Recent comments</h4>
+        {% for comment in comments  %}
+            {% if comment %}
+                <p> On {{comment.created_date}}</p>
+                <p>Post: <a href="{% url 'recipe_detail' comment.recipe.id %}">{{ comment.recipe}}</a></p>
+                <p>{{ comment.text }}</p>
+                <div class="card-action">
+                <a href="{% url 'comment_edit' comment.recipe.id comment.id %}">Edit</a>
+                <a href="{% url 'comment_delete' comment.recipe.id comment.id%}">Delete</a>
+                </div>
+            {% else %}
+                <p>No commnets yet</p>
+            {% endif %}
+        {% endfor %} 
+</div>
 
 {% endblock %}

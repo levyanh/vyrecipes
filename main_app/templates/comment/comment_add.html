@@ -5,6 +5,8 @@
         <h4>New comment:</h4>
         {% csrf_token %}
         {{ comment_form.as_p }}
-        <input class='btn' type="submit" value="Add Comment" />
+        <div class="button">
+            <input type="submit" class="btn yellow darken-2" value="add comment">
+        </div>
     </form>
 {% endblock content %}

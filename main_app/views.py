@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .forms import SignUpForm, CommentForm, CommentUpdateForm, UserUpdateForm, ProfileUpdateForm
-from .models import Profile, Recipe, Comment
+from .forms import SignUpForm, CommentForm, CommentUpdateForm, UserUpdateForm
+from .models import Recipe, Comment
 from django.shortcuts import get_object_or_404
 
 
@@ -23,19 +23,15 @@ def profile(request):
     comment = Comment.objects.filter(user=request.user)
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
-        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid():
             user_form.save()
-            profile_form.save()
         return redirect('profile')
     else:
-        user_form = UserUpdateForm(instance=request.user)
-        profile_form = ProfileUpdateForm(instance=request.user.profile)    
+        user_form = UserUpdateForm(instance=request.user) 
     context = {
         'recipes' : recipe,
         'comments' : comment,
         'user_form' : user_form,
-        'profile_form' : profile_form
     }
     return render(request, 'profile.html',context)
 
