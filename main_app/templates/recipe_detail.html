@@ -2,9 +2,33 @@
 
 {% block content %}
 <div class="card brown darken-3">
-    <h5> {{recipe.title}} </h5>
-    <img src="{{recipe.image.url}}" width="500px"/> <br>
-    {{recipe.ingredient}}<br>
-    {{recipe.instruction}}
+<div class="container">
+    <h3> {{ recipe.title }} </h3>
+    <img class="center" src="{{ recipe.image.url }}" width="500px"/> <br>
+    {{ recipe.ingredient }}<br>
+    {{ recipe.instruction }}
+    <div class="Add Comment">
+        <a class="btn" href="{% url 'comment_add' recipe.id %}">Add comment</a>
+    </div>
+    <div class="comments">
+        {% if user.is_authenticated %}
+            <div class="card-content">
+                {% if comments.count == 0 %}
+                    <h4>No comments posted!</h4>
+                {% else %}
+                    <h4>{{ comments.count }} comments</h4>
+                {% endif %}
+                {% for comment in comments %}
+                    <br>
+                        <div class="card-action">
+                            <small>On {{comment.created_date}}</small>
+                            <p>{{comment.user}} said:</p>
+                            <h5>{{ comment.text|safe|linebreaks }}</h5>
+                            
+                        </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
