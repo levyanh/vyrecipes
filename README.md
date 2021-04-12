@@ -15,7 +15,7 @@
 ## Installation steps:
 - python3 -m venv .env
 - source .env/bin/activate
-- createdb vykitchen
+- createdb vyrecipes
 - pip install --upgrade pip (if upgrading required)
 - pip3 install psycopg2-binary
 - pip3 install -r requirements.txt
@@ -24,7 +24,6 @@
 
 **In this project, I installed:**
 - python -m pip install Pillow 
-- pip install argon2-cffi
 
 **Remember to add superuser admin**
 - python3 manage.py createsuperuser

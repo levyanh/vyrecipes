@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2 class="center">Sign up</h2>
     <form method="post">
+        <h2 class="center">Sign up</h2>
         {% csrf_token %}
         {% for field in form %}
-        <p>
-            {{ field.label_tag }}<br>
+            <p>{{ field.label_tag }}</p>
             {{ field }}
             {% if field.help_text %}
             <small style="color: grey">{{ field.help_text }}</small>
@@ -14,8 +13,9 @@
             {% for error in field.errors %}
             <p style="color: red">{{ error }}</p>
             {% endfor %}
-        </p>
         {% endfor %}
-        <input type="submit" class="btn" value="signup">
+        <div class="button">
+        <input type="submit" class="btn yellow darken-2"" value="signup">
+        </div>
     </form>
 {% endblock %}

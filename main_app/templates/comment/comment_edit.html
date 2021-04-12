@@ -2,9 +2,11 @@
 
 {% block content %}
     <form method="POST">
-        <h4>Edit comment</h4>
+        <h4 class="center">Edit comment</h4>
         {% csrf_token %}
         {{ comment_form.as_p }} <br>
-        <input class='btn' type="submit" value="Delete" />
+        <div class="button">
+            <input type="submit" class="btn yellow darken-2" value="edit comment">
+        </div>
     </form>
 {% endblock content %}

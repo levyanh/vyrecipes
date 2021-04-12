@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat&display=swap');
+
+h2 h3 h4 {
+    font-family: 'Abril Fatface', cursive;
+}
+
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://cdn.asiatatler.com/asiatatler/i/th/2019/08/15162927-dsc0499_cover_2000x1335.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://cdn.asiatatler.com/asiatatler/i/th/2019/08/15162927-dsc0499_cover_2000x1335.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -7,51 +13,79 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    color: white;
-    font-size: medium;
-    }
-
-main {
-    flex: 1 0 auto;
-    }
-
-footer {
-    padding-top: 0;
-    text-align: right;
-    }
-
-form {
-    color:rgb(252, 252, 251);
-    padding: 5%;
-    margin-top:10%;
-    margin: 0 auto;
-    background: black;
-    background-repeat: no-repeat;
-    background-size: cover;
-    max-width: 800px;
-    position: relative;
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    text-transform: uppercase;
-    }
-
-img .logo {
-    width: 80px;
-    z-index: 9999;
-    text-align: center;
-    }
-
+    font-size: large;
+}
 .box {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
     padding: 20px;
     grid-gap: 40px;
-    }    
+}
+.card {
+    margin-top: 50px;
+}
+main {
+    flex: 1 0 auto;
+}
+
+nav {
+    position: fixed;
+    z-index: 9998;
+    text-transform: uppercase;
+}
+
+ul li a {
+    color: rgb(241, 208, 15);
+    font-size: larger;
+}
+
+footer {
+    padding-top: 0;
+    text-align: right;
+}
+
+form {
+    color: white;
+    padding: 5%;
+    margin-top:10%;
+    background: rgb(61, 41, 34);
+}
+form label {
+    text-transform: uppercase;
+    color: rgb(241, 208, 15);
+}
+form .helptext {
+    color: grey;
+    font-size: small;
+}
+.button {
+    padding: 20px 0 20px 0;
+    text-align: center;
+}  
 
 .avatar {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
+    margin-top: 30px;
 }
-.card-title {
-    font-size: large;
+#recipe_photo {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.recipe_title {
+    padding: 30px 0 20px 0;
+    text-align: center;
+}
+
+.profile {
+    color: white;
+    text-align: center;
+    padding-top: 60px;
+}
+
+#mobile-demo {
+    z-index: 9999;
 }
