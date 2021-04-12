@@ -32,6 +32,9 @@ footer {
 }
 .row {
     padding-right: 30px;
+} 
+.card {
+    margin-top: 100px;
 }
 form {
     color: white;
@@ -73,12 +76,6 @@ form .helptext {
 }
 #mobile-demo {
     z-index: 9999;
-}
-.card {
-    margin-top: 50px;
-}
-.card-image {
-    width: ;
 }
 
 @media screen and (max-width: 600px) {
